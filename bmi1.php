@@ -1,5 +1,5 @@
 <?php
-class Mens {
+abstract class Mens {
    private $naam;
    private $lengte;     // in meters
    private $gewicht;    
@@ -23,29 +23,30 @@ class Mens {
    }
 } 
 class Coach extends Mens {
+    public $personeelsnummer;
+    public function geefantwoordopdevraag($vraag) {
+        return "dat weet ik niet";
+    }
     
 }
 class Deelnemer extends Mens {
-    
+    public $score;
 }
 /*
 $m1 = new Mens("Floris");
 echo $m1->geefmejenaam() . " " . $m1->geefmejebmi();
 */
 echo "<BR>";
-$m2 = new Mens("Piet", 1.67, 63.5);
-
-echo $m2->geefmejenaam() . " " .round($m2->geefmejebmi(),1);
-
+/*
+$m2 = new Mens("Piet", 1.50, 63.5);
+echo $m2->geefmejenaam() . " " . $m2->geefmejebmi();
+*/
 echo "<BR>";
-$iemand = new Coach("Klaas", 1.50, 40.0);
-
-echo $iemand->geefmejenaam() . " " . round ($iemand->geefmejebmi(),1);
+$c = new Coach("Klaas", 1.50, 40.0);
+echo $c->geefmejenaam() . " " . $c->geefmejebmi();
+echo "<BR>";
+echo $c->geefantwoordopdevraag("hoe moet ik een abstracte klasse maken?");
+echo "<BR>";
 $iemand2 = new Deelnemer("Sjaak", 1.85, 80.0);
-
-echo "<BR>";
-
-echo $iemand2->geefmejenaam() . " " .round($iemand2->geefmejebmi(),1);
-
-
+echo $iemand2->geefmejenaam() . " " . $iemand2->geefmejebmi();
 ?>
